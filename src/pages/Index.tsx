@@ -14,7 +14,7 @@ const Index = () => {
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl tracking-tight font-extrabold text-green-600 sm:text-5xl md:text-6xl">
               <span className="block text-green-600">Your Healthy Fresh Alternative
                 <br /> On The Go</span>
             </h1>
@@ -45,7 +45,7 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
+            <h2 className="text-3xl font-extrabold text-green-600">
               Why Choose KRP Farm?
             </h2>
             <p className="mt-4 text-lg text-gray-500">
@@ -103,7 +103,7 @@ const Index = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">How It Works</h2>
+            <h2 className="text-3xl font-extrabold text-green-600">How It Works</h2>
             <p className="mt-4 text-lg text-gray-500">
               Getting fresh produce has never been easier
             </p>
@@ -161,7 +161,7 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">What Our Users Say</h2>
+            <h2 className="text-3xl font-extrabold text-green-600">What Our Users Say</h2>
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
