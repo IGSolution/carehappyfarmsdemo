@@ -49,7 +49,7 @@ const Index = () => {
               Why Choose KRP Farm?
             </h2>
             <p className="mt-4 text-lg text-gray-500">
-             KRP Farms since 2011 has been delivering fruits, veggies & more across Nigeria 
+              KRP Farms since 2011 has been delivering fruits, veggies & more across Nigeria
             </p>
           </div>
 
@@ -209,6 +209,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+      <FAQ />
+
 
       {/* CTA Section */}
       <section className="bg-green-600 mb-16">
@@ -230,8 +232,7 @@ const Index = () => {
         </div>
       </section>
 
-                  <FAQ/>
-  
+
     </div>
   );
 };
