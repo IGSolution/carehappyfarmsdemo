@@ -32,7 +32,7 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
-  const [role, setRole] = useState<'farmer' | 'customer'>('customer');
+  const role ='customer';
   const [location, setLocation] = useState<LocationType>('lagos');
   const [loading, setLoading] = useState(false);
   const [signUpSuccess, setSignUpSuccess] = useState(false);
@@ -254,12 +254,12 @@ export default function Auth() {
             </TabsContent>
 
             <TabsContent value="signup">
-              <Tabs value={role} onValueChange={(value: any) => setRole(value)} className="mb-6">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="customer">Customer</TabsTrigger>
+              {/* <Tabs value={role} onValueChange={(value: any) => setRole(value)} className="mb-6">
+                <TabsList className="grid w-full ">
+                  <TabsTrigger value="customer w-full">Customer</TabsTrigger>
                   <TabsTrigger value="farmer">Farmer</TabsTrigger>
                 </TabsList>
-              </Tabs>
+              </Tabs> */}
 
               <form onSubmit={handleSignUp} className="space-y-4">
                 <div className="space-y-2">
