@@ -24,7 +24,7 @@ const queryClient = new QueryClient();
 
 function AppRoutes() {
   const { user, profile, loading } = useAuth();
-console.log('User:', user);
+  console.log('User:', user);
   console.log('Profile:', profile);
   if (loading) {
     return (
@@ -39,41 +39,41 @@ console.log('User:', user);
       <Route path="/auth" element={<Auth />} />
       <Route path="/confirm-email" element={<ConfirmEmail />} />
       <Route path="/payment-success" element={<PaymentSuccess />} />
-      
+
       {/* Public routes */}
-       <Route element={<MainLayout />}>
-         <Route path="/marketplace" element={<Marketplace />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/blog" element={<Blog />} />
-      <Route path="/contact" element={<Contact />} />
-      
-      {/* Redirect based on user status */}
-      <Route path="/" element={
-        user ? (
-          user.email_confirmed_at ? (
-            profile?.role === 'farmer' ? 
-              <Navigate to="/dashboard" replace /> : 
-              <Navigate to="/marketplace" replace />
+      <Route element={<MainLayout />}>
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/contact" element={<Contact />} />
+
+        {/* Redirect based on user status */}
+        <Route path="/" element={
+          user ? (
+            user.email_confirmed_at ? (
+              profile?.role === 'farmer' ?
+                <Navigate to="/dashboard" replace /> :
+                <Navigate to="/marketplace" replace />
+            ) : (
+              <Navigate to="/auth" replace />
+            )
           ) : (
-            <Navigate to="/auth" replace />
+            <Index />
           )
-        ) : (
-          <Index />
-        )
-      } />
-       
-       
-       </Route>
-    
-      
+        } />
+
+
+      </Route>
+
+      <Route path="/marketplace" element={<Marketplace />} />
+
       <Route path="/dashboard" element={
-        
-          <Dashboard />
-     
+
+        <Dashboard />
+
       } />
-      
+
       <Route path="/cart" element={<Cart />} />
-      
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
