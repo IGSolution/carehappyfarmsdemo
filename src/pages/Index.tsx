@@ -56,41 +56,41 @@ const Index = () => {
           <div className="mt-16">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <Leaf className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Fresh & Local</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Fresh & Local</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Direct from farms to ensure maximum freshness and quality
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <Users className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Support Farmers</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Support Farmers</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Help local farmers get fair prices for their hard work
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <ShoppingCart className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Easy Shopping</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Easy Shopping</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Simple ordering process with delivery to your location
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <TrendingUp className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Fair Prices</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Fair Prices</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Affordable prices, with no middleman involved
                 </p>
               </div>
