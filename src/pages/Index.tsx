@@ -24,14 +24,14 @@ const Index = () => {
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
                 <Link to="/auth">
-                  <Button size="lg" className="w-full">
+                  <Button size="lg" className="w-full transition-transform duration-300 ease-in-out transform hover:scale-105">
                     Start Shopping
                   </Button>
                 </Link>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <Link to="/marketplace">
-                  <Button variant="outline" size="lg" className="w-full">
+                  <Button variant="outline" size="lg" className="w-full transition-transform duration-300 ease-in-out transform hover:scale-105">
                     Browse Products
                   </Button>
                 </Link>
@@ -111,7 +111,7 @@ const Index = () => {
 
           <div className="mt-16">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <Card>
+              <Card className="transition-transform duration-300 ease-in-out transform hover:scale-110" >
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
                     <span className="text-lg font-bold">1</span>
@@ -125,7 +125,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-transform duration-300 ease-in-out transform hover:scale-110" >
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
                     <span className="text-lg font-bold">2</span>
@@ -139,7 +139,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-transform duration-300 ease-in-out transform hover:scale-110" >
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
                     <span className="text-lg font-bold">3</span>
@@ -166,7 +166,7 @@ const Index = () => {
 
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -180,7 +180,7 @@ const Index = () => {
             </Card>
 
             <Card>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -194,7 +194,7 @@ const Index = () => {
             </Card>
 
             <Card>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -222,7 +222,7 @@ const Index = () => {
           <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div className="inline-flex rounded-md shadow">
               <Link to="/auth">
-                <Button size="lg" variant="secondary" className="inline-flex items-center">
+                <Button size="lg" variant="secondary" className="inline-flex items-center transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Get started
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
