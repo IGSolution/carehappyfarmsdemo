@@ -91,7 +91,7 @@ const Contact = () => {
           <div className="lg:col-span-1">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">Contact Information</CardTitle>
+                <CardTitle className="text-2xl text-green-600">Contact Information</CardTitle>
                 <CardDescription>
                   Multiple ways to reach our support team
                 </CardDescription>
@@ -170,7 +170,7 @@ const Contact = () => {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">Send us a Message</CardTitle>
+                <CardTitle className="text-2xl text-green-600">Send us a Message</CardTitle>
                 <CardDescription>
                   Fill out the form below and we'll get back to you as soon as
                   possible
