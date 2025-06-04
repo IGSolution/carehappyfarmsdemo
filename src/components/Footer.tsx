@@ -15,7 +15,7 @@ export default function Footer() {
                             <span className="ml-2 text-xl font-bold">KRP Farm</span>
                         </Link>
                         <p className="mt-4 text-gray-400 max-w-md">
-                            Connecting Nigerian farmers with consumers for fresh, local
+                            Connecting Nigerian farmers with consumers for fresh local
                             produce delivery.
                         </p>
                         <div className="mt-6">

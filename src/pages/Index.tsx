@@ -49,7 +49,7 @@ const Index = () => {
               Why Choose KRP Farm?
             </h2>
             <p className="mt-4 text-lg text-gray-500">
-             KRP Farms since 2011 has been delivering fruits, veggies & more across in Nigeria 
+             KRP Farms since 2011 has been delivering fruits, veggies & more across Nigeria 
             </p>
           </div>
 
@@ -91,7 +91,7 @@ const Index = () => {
                 </div>
                 <h3 className="mt-6 text-lg font-medium text-gray-900">Fair Prices</h3>
                 <p className="mt-2 text-base text-gray-500">
-                  Competitive prices by cutting out the middleman
+                  Affordable prices, with no middleman involved
                 </p>
               </div>
             </div>
@@ -173,7 +173,7 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "I like the potatoes, received them in the good conditions."
+                  "I like the potatoes, received them in good conditions."
                 </p>
                 <div className="font-medium text-gray-900">- Abibi</div>
               </CardContent>
@@ -201,7 +201,7 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="text-gray-600 mb-4">
-                  "My customers love the fruits and vegitable I got from you, thank you KRP Farms."
+                  "My customers love the fruits and vegitables I got from you, thank you KRP Farms."
                 </p>
                 <div className="font-medium text-gray-900">- Sanisu</div>
               </CardContent>

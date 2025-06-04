@@ -15,7 +15,7 @@ export default function FAQ() {
                         </h4>
                         <p className="text-gray-600 mb-4">
                             To place an order, go to the shop page, select the items you
-                            wish to order for and make a purchase.
+                            wish to order for and place an order.
                         </p>
 
                         <h4 className="font-semibold text-gray-900 mb-2">

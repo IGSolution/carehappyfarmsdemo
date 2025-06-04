@@ -194,7 +194,7 @@ export type Database = {
           },
         ]
       }
-    profiles: {
+      profiles: {
         Row: {
           created_at: string | null
           full_name: string
