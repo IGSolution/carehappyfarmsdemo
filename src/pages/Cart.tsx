@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
@@ -144,7 +143,7 @@ export default function Cart() {
       const orderItems = cartItems.map(item => ({
         order_id: orderData.id,
         product_id: item.product_id,
-        farmer_id: item.product?.farmer_id,
+        admin_id: item.product?.admin_id, // Using admin_id instead of farmer_id
         quantity: item.quantity,
         unit_price: item.product?.price || 0
       }));

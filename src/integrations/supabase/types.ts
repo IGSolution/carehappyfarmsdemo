@@ -9,6 +9,33 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+       admin_invitations: {
+        Row: {
+          created_at: string
+          email: string
+          expires_at: string
+          id: string
+          token: string
+          used: boolean
+        },
+        Insert: {
+          created_at?: string
+          email: string
+          expires_at?: string
+          id?: string
+          token: string
+          used?: boolean
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          expires_at?: string
+          id?: string
+          token?: string
+          used?: boolean
+        }
+        Relationships: [] 
+      }
       cart_items: {
         Row: {
           created_at: string | null
@@ -51,7 +78,7 @@ export type Database = {
       order_items: {
         Row: {
           created_at: string | null
-          farmer_id: string
+          admin_id: string
           id: string
           order_id: string
           product_id: string
@@ -60,7 +87,7 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
-          farmer_id: string
+          admin_id: string
           id?: string
           order_id: string
           product_id: string
@@ -69,7 +96,7 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
-          farmer_id?: string
+          admin_id?: string
           id?: string
           order_id?: string
           product_id?: string
@@ -79,7 +106,7 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "order_items_farmer_id_fkey"
-            columns: ["farmer_id"]
+            columns: ["admin_id"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -146,7 +173,7 @@ export type Database = {
           category: string
           created_at: string | null
           description: string | null
-          farmer_id: string
+          admin_id: string
           id: string
           image_url: string | null
           is_available: boolean | null
@@ -160,7 +187,7 @@ export type Database = {
           category: string
           created_at?: string | null
           description?: string | null
-          farmer_id: string
+          admin_id: string
           id?: string
           image_url?: string | null
           is_available?: boolean | null
@@ -174,7 +201,7 @@ export type Database = {
           category?: string
           created_at?: string | null
           description?: string | null
-          farmer_id?: string
+          admin_id?: string
           id?: string
           image_url?: string | null
           is_available?: boolean | null
@@ -187,7 +214,7 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "products_farmer_id_fkey"
-            columns: ["farmer_id"]
+            columns: ["admin_id"]
             isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -254,7 +281,7 @@ export type Database = {
         | "aba"
         | "jos"
         | "ilorin"
-      user_role: "farmer" | "customer"
+      user_role: "farmer" | "customer" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -384,7 +411,7 @@ export const Constants = {
         "jos",
         "ilorin",
       ],
-      user_role: ["farmer", "customer"],
+      user_role: ["farmer","admin", "customer"],
     },
   },
 } as const

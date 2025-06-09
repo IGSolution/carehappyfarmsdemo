@@ -1,5 +1,5 @@
 
-export type UserRole = 'farmer' | 'customer';
+export type UserRole = 'farmer' | 'customer'|'admin';
 export type LocationType = 'lagos' | 'abuja' | 'kano' | 'ibadan' | 'port_harcourt' | 'kaduna' | 'benin' | 'maiduguri' | 'zaria' | 'aba' | 'jos' | 'ilorin';
 
 export interface Profile {
@@ -17,7 +17,7 @@ export interface Profile {
 
 export interface Product {
   id: string;
-  farmer_id: string;
+  admin_id: string;
   name: string;
   description?: string;
   price: number;
@@ -54,9 +54,18 @@ export interface OrderItem {
   id: string;
   order_id: string;
   product_id: string;
-  farmer_id: string;
+  admin_id: string;
   quantity: number;
   unit_price: number;
   created_at: string;
   product?: Product;
+}
+
+export interface AdminInvitation {
+  id: string;
+  email: string;
+  token: string;
+  expires_at: string;
+  used: boolean;
+  created_at: string;
 }

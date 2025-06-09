@@ -23,16 +23,16 @@ const Index = () => {
             </p>
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
-                <Link to="/auth">
+                <Link to="/marketplace">
                   <Button size="lg" className="w-full">
                     Start Shopping
                   </Button>
                 </Link>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
-                <Link to="/marketplace">
+                <Link to="/donations">
                   <Button variant="outline" size="lg" className="w-full">
-                    Browse Products
+                    Support Our Mission
                   </Button>
                 </Link>
               </div>

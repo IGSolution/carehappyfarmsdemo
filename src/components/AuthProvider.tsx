@@ -5,6 +5,9 @@ import { supabase } from '@/integrations/supabase/client';
 import { Profile } from '@/types/database';
 import { AuthContext, AuthContextType } from '@/contexts/AuthContext';
 
+
+
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
@@ -19,8 +22,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       .single();
     
     console.log('Fetched profile data:', profileData);
-    setProfile(profileData);
-    return profileData;
+     if (profileData) {
+      const convertedProfile: Profile = {
+        ...profileData,
+        role: profileData.role === 'farmer' ? 'admin' : profileData.role as 'admin' | 'customer'
+      };
+      
+      setProfile(convertedProfile);
+      return convertedProfile;
+    }
+    
+    setProfile(null);
+    return null;
   };
 
   const refreshProfile = async () => {
@@ -40,10 +53,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           // Fetch user profile
           const profileData = await fetchProfile(session.user.id);
           
-          // Store auth token in localStorage when email is confirmed
-          if (session.user.email_confirmed_at) {
+         // For admins, store auth token immediately without email confirmation requirement
+          // For customers, require email confirmation
+          if (session.user.email_confirmed_at || profileData?.role === 'admin') {
             localStorage.setItem('auth_token', session.access_token);
-            console.log('User email is confirmed, stored auth token');
+            console.log('Stored auth token for confirmed user or admin');
           } else {
             console.log('User email is not confirmed, removing auth token');
             localStorage.removeItem('auth_token');
@@ -66,9 +80,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (session?.user) {
         fetchProfile(session.user.id).then((profileData) => {
           // Store auth token if email is confirmed
-          if (session.user.email_confirmed_at) {
+          // Store auth token if email is confirmed OR if user is admin
+          if (session.user.email_confirmed_at || profileData?.role === 'admin') {
             localStorage.setItem('auth_token', session.access_token);
-            console.log('Initial: User email is confirmed, stored auth token');
+            console.log('Initial: Stored auth token for confirmed user or admin');
           } else {
             console.log('Initial: User email is not confirmed, removing auth token');
             localStorage.removeItem('auth_token');
@@ -83,10 +98,57 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => subscription.unsubscribe();
   }, []);
 
+  const inviteUser = async(email:string)=>{
+    const token = crypto.randomUUID()
+    const expireAt = new Date(Date.now() + 24 * 60 * 60 * 1000 ) . toISOString()
+    const redirectUrl = `${window.location.origin}/admin-signup?token=${token}`
+      console.log('inviting user:', email)
+
+     try {
+        const {data:insertData, error: insertError}= await supabase.
+       from('admin_invitations')
+       .insert([
+         {
+          email,
+          token:token,
+          expires_at:expireAt,
+          used:false,
+         }
+      
+        ])
+
+        if(insertData){
+          console.log('inserted successfully', insertData)
+        }else{
+          console.log('inserted error', insertError)
+        }
+
+        // 2. Use Supabase to send email invite
+  const { data: inviteData, error: inviteError } = await supabase.auth.admin.inviteUserByEmail(email, {
+    redirectTo: redirectUrl,
+  });
+
+          if(inviteError){
+            console.log('invitation error', inviteError)
+
+          }
+
+          return inviteData
+     } catch (error) {
+        console.log(error,'error')
+        throw error
+     }
+
+
+  }
   const signUp = async (email: string, password: string, userData: any) => {
     console.log('Attempting sign up for:', email);
     
-    const redirectUrl = `${window.location.origin}/auth?confirmed=true`;
+    const isAdmin = userData.role === 'admin';
+    const redirectUrl = isAdmin 
+      ? `${window.location.origin}/dashboard`
+      :
+      `${window.location.origin}/auth?confirmed=true`
     
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -101,6 +163,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { data, error };
   };
 
+
   const signIn = async (email: string, password: string) => {
     console.log('Attempting sign in for:', email);
     
@@ -113,8 +176,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return { data, error };
     }
 
-    // Check if user has confirmed their email
-    if (data.user && !data.user.email_confirmed_at) {
+    if(data.user){
+      const profileData = await  fetchProfile(data.user.id)
+
+ // If it's a customer and email is not confirmed, sign them out
+    if (profileData?.role === 'customer' && !data.user.email_confirmed_at) {
       // Sign out the user since they haven't confirmed their email
       await supabase.auth.signOut();
       return { 
@@ -125,14 +191,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       };
     }
 
+    }
+
+   
+
     return { data, error };
   };
 
-  const signOut = async () => {
-    console.log('Signing out');
+
+
+const signOut = async () => {
+  try {
     localStorage.removeItem('auth_token');
-    await supabase.auth.signOut();
-  };
+    const { error } = await supabase.auth.signOut();
+
+    if (error) {
+      console.error('Error signing out:', error.message);
+    } else {
+      setUser(null);
+      setSession(null);
+      setProfile(null);
+      window.location.href = '/'; 
+    }
+  } catch (err) {
+    console.error('Unexpected error during sign out:', err);
+  }
+};
 
   const verifyEmail = async (token_hash: string) => {
     try {
@@ -238,7 +322,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     updateProfile,
     verifyEmail,
     resendConfirmation,
-    refreshProfile
+    refreshProfile,
+    inviteUser
+ 
   };
 
   return (

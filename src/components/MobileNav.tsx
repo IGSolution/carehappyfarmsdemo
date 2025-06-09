@@ -77,7 +77,16 @@ export const MobileNav = ({ isAuthenticated, onSignOut }: MobileNavProps) => {
                     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                   >
                     <span className="ml-3 text-base font-medium text-gray-900">
-                      Contact
+                     Donations
+                    </span>
+                  </Link>
+                    <Link
+                    to="/donations"
+                    onClick={closeMenu}
+                    className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                  >
+                    <span className="ml-3 text-base font-medium text-gray-900">
+                     Donations
                     </span>
                   </Link>
                 </nav>

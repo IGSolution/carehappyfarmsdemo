@@ -1,87 +1,115 @@
 
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Plus, Minus } from 'lucide-react';
-import { Product, CartItem } from '@/types/database';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Product, CartItem, Profile } from '@/types/database';
+import { User } from '@supabase/supabase-js';
+import { Minus, Plus, Eye } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
   cartItem?: CartItem;
-  user: any;
-  profile: any;
+  user: User | null;
+  profile: Profile | null;
   loading: boolean;
   onAddToCart: (productId: string) => void;
   onUpdateQuantity: (cartItemId: string, newQuantity: number) => void;
 }
 
-export function ProductCard({ 
-  product, 
-  cartItem, 
-  user, 
-  profile, 
-  loading, 
-  onAddToCart, 
-  onUpdateQuantity 
+export function ProductCard({
+  product,
+  cartItem,
+  user,
+  profile,
+  loading,
+  onAddToCart,
+  onUpdateQuantity
 }: ProductCardProps) {
+  const isOutOfStock = !product.is_available || (product.stock_quantity || 0) === 0;
+
   return (
-    <Card className="overflow-hidden">
-      <CardHeader>
-        <CardTitle className="text-lg">{product.name}</CardTitle>
-        <CardDescription className="text-sm text-gray-600">
-          {product.category}
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        {product.description && (
-          <p className="text-sm text-gray-600 mb-3">{product.description}</p>
-        )}
-        <div className="flex justify-between items-center mb-4">
-          <span className="text-2xl font-bold text-green-600">
-            ₦{product.price}/{product.unit}
-          </span>
-          <span className="text-sm text-gray-500">
-            Stock: {product.stock_quantity || 0}
-          </span>
+    <Card className="h-full flex flex-col">
+      <CardHeader className="pb-3">
+        <div className="aspect-square bg-gray-100 rounded-md mb-3 flex items-center justify-center overflow-hidden">
+          {product.image_url ? (
+            <img
+              src={product.image_url}
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="text-gray-400 text-4xl">📦</div>
+          )}
         </div>
-        
-        {user && profile?.role === 'customer' && cartItem ? (
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => onUpdateQuantity(cartItem.id, cartItem.quantity - 1)}
-                disabled={loading}
-              >
-                <Minus className="w-4 h-4" />
-              </Button>
-              <span className="font-semibold">{cartItem.quantity}</span>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => onUpdateQuantity(cartItem.id, cartItem.quantity + 1)}
-                disabled={loading}
-              >
-                <Plus className="w-4 h-4" />
-              </Button>
-            </div>
-            <span className="text-sm text-green-600">In Cart</span>
-          </div>
-        ) : user && profile?.role === 'farmer' ? (
-          <Button disabled className="w-full" variant="outline">
-            Farmers cannot purchase
-          </Button>
-        ) : (
-          <Button
-            onClick={() => onAddToCart(product.id)}
-            disabled={loading || (product.stock_quantity || 0) <= 0}
-            className="w-full"
-          >
-            {loading ? 'Adding...' : 
-             (product.stock_quantity || 0) <= 0 ? 'Out of Stock' : 'Add to Cart'}
-          </Button>
-        )}
+        <div className="space-y-2">
+          <Badge variant="secondary" className="text-xs">
+            {product.category}
+          </Badge>
+          <CardTitle className="text-lg leading-tight">{product.name}</CardTitle>
+          <p className="text-sm text-gray-600 line-clamp-2">{product.description}</p>
+        </div>
+      </CardHeader>
+      
+      <CardContent className="flex-1 pt-0">
+        <div className="space-y-2">
+          <p className="text-2xl font-bold text-green-600">
+            ₦{product.price}/{product.unit}
+          </p>
+          <p className="text-sm text-gray-500">
+            Stock: {product.stock_quantity || 0} {product.unit}(s)
+          </p>
+          {isOutOfStock && (
+            <Badge variant="destructive" className="text-xs">
+              Out of Stock
+            </Badge>
+          )}
+        </div>
       </CardContent>
+      
+      <CardFooter className="pt-0 flex flex-col gap-2">
+        <Button asChild variant="outline" className="w-full" size="sm">
+          <Link to={`/product/${product.id}`}>
+            <Eye className="w-4 h-4 mr-2" />
+            View Details
+          </Link>
+        </Button>
+        
+        {!isOutOfStock && (
+          <>
+            {cartItem ? (
+              <div className="flex items-center justify-between w-full">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onUpdateQuantity(cartItem.id, cartItem.quantity - 1)}
+                  disabled={loading}
+                >
+                  <Minus className="h-4 w-4" />
+                </Button>
+                <span className="mx-3 font-medium">{cartItem.quantity}</span>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => onUpdateQuantity(cartItem.id, cartItem.quantity + 1)}
+                  disabled={loading || cartItem.quantity >= (product.stock_quantity || 0)}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+            ) : (
+              <Button
+                onClick={() => onAddToCart(product.id)}
+                disabled={loading}
+                className="w-full"
+                size="sm"
+              >
+                Add to Cart
+              </Button>
+            )}
+          </>
+        )}
+      </CardFooter>
     </Card>
   );
 }

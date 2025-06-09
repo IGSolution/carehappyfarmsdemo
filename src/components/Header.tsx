@@ -40,6 +40,9 @@ export default function Header () {
               <Link to="/contact" className="text-gray-500 hover:text-gray-900">
                 Contact
               </Link>
+              <Link to="/donations" className="text-gray-500 hover:text-gray-900">
+                Donations
+              </Link>
             </nav>
 
             <div className="hidden md:flex gap-2">

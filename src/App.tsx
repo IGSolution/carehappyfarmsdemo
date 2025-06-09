@@ -19,7 +19,11 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ConfirmEmail from "./pages/ConfirmEmail"
 import MainLayout from "@/components/layouts/MainLayout"; // import the new layout
-
+import Donations from "./pages/Donations";
+import Signup from "./pages/Admin/Signup";
+import Signin from "./pages/Admin/Signin";
+import ProductDetail from "./pages/ProductDetail";
+import InviteUser from "./pages/InviteUser";
 const queryClient = new QueryClient();
 
 function AppRoutes() {
@@ -37,25 +41,32 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/auth" element={<Auth />} />
+       <Route path="/admin-signup" element={<Signup/>} />
+        <Route path="/admin-signin" element={<Signin/>} />
       <Route path="/confirm-email" element={<ConfirmEmail />} />
       <Route path="/payment-success" element={<PaymentSuccess />} />
+      <Route path="/invite" element={<InviteUser/>}/>
 
       {/* Public routes */}
       <Route element={<MainLayout />}>
+       <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/donations" element={<Donations/>}/>
 
         {/* Redirect based on user status */}
         <Route path="/" element={
+
           user ? (
-            user.email_confirmed_at ? (
-              profile?.role === 'farmer' ?
-                <Navigate to="/dashboard" replace /> :
-                <Navigate to="/marketplace" replace />
-            ) : (
-              <Navigate to="/auth" replace />
-            )
+             profile?.role === 'admin' ?(
+               <Navigate to="/dashboard" replace />
+             ): user.email_confirmed_at ?(
+               <Navigate to="/marketplace" replace />
+             ):(
+               <Navigate to="/auth" replace />
+             )
+            
           ) : (
             <Index />
           )
@@ -66,10 +77,10 @@ function AppRoutes() {
 
       <Route path="/marketplace" element={<Marketplace />} />
 
-      <Route path="/dashboard" element={
-
-        <Dashboard />
-
+    <Route path="/dashboard" element={
+        <ProtectedRoute allowedRoles={['admin']}>
+          <Dashboard />
+        </ProtectedRoute>
       } />
 
       <Route path="/cart" element={<Cart />} />

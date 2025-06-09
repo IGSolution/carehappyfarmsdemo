@@ -24,10 +24,10 @@ export const ProtectedRoute = ({
   }
 
   if (!user || !profile) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/" replace />;
   }
 
-  if (requireVerification && !profile.is_verified) {
+  if (requireVerification && !user.email_confirmed_at) {
     return <Navigate to="/auth" replace />;
   }
 

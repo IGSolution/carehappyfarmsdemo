@@ -1,6 +1,6 @@
 
 import { createContext } from 'react';
-import { User, Session } from '@supabase/supabase-js';
+import { User, Session, AdminUserAttributes } from '@supabase/supabase-js';
 import { Profile } from '@/types/database';
 
 export interface AuthContextType {
@@ -15,6 +15,9 @@ export interface AuthContextType {
   verifyEmail: (token_hash: string) => Promise<any>;
   resendConfirmation: () => Promise<any>;
   refreshProfile: () => Promise<void>;
+  inviteUser:(email:string)=>Promise<any>
+ 
+  
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
