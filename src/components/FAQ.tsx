@@ -79,7 +79,7 @@ export default function FAQ() {
 
   return (
     <section className="bg-white rounded-lg shadow-lg p-8">
-      <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+      <h3 className="text-2xl font-bold text-green-600 mb-8 text-center">
         Frequently Asked Questions
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

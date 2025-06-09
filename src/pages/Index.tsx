@@ -14,7 +14,7 @@ const Index = () => {
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl tracking-tight font-extrabold text-green-600 sm:text-5xl md:text-6xl">
               <span className="block text-green-600">Your Healthy Fresh Alternative
                 <br /> On The Go</span>
             </h1>
@@ -24,14 +24,14 @@ const Index = () => {
             <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
               <div className="rounded-md shadow">
                 <Link to="/marketplace">
-                  <Button size="lg" className="w-full">
+                  <Button size="lg" className="w-full transition-transform duration-300 ease-in-out transform hover:scale-105">
                     Start Shopping
                   </Button>
                 </Link>
               </div>
               <div className="mt-3 sm:mt-0 sm:ml-3">
                 <Link to="/donations">
-                  <Button variant="outline" size="lg" className="w-full">
+                  <Button variant="outline" size="lg" className="w-full  transition-transform duration-300 ease-in-out transform hover:scale-105">
                     Support Our Mission
                   </Button>
                 </Link>
@@ -45,7 +45,7 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
+            <h2 className="text-3xl font-extrabold text-green-600">
               Why Choose KRP Farm?
             </h2>
             <p className="mt-4 text-lg text-gray-500">
@@ -56,41 +56,41 @@ const Index = () => {
           <div className="mt-16">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <Leaf className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Fresh & Local</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Fresh & Local</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Direct from farms to ensure maximum freshness and quality
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <Users className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Support Farmers</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Support Farmers</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Help local farmers get fair prices for their hard work
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <ShoppingCart className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Easy Shopping</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Easy Shopping</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Simple ordering process with delivery to your location
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
+                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto transition-transform duration-300 ease-in-out transform hover:scale-110">
                   <TrendingUp className="h-6 w-6" />
                 </div>
-                <h3 className="mt-6 text-lg font-medium text-gray-900">Fair Prices</h3>
-                <p className="mt-2 text-base text-gray-500">
+                <h3 className="transition-transform duration-300 ease-in-out transform hover:scale-110 mt-6 text-lg font-medium text-gray-900">Fair Prices</h3>
+                <p className="mt-2 text-base text-gray-500 transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Affordable prices, with no middleman involved
                 </p>
               </div>
@@ -103,7 +103,7 @@ const Index = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">How It Works</h2>
+            <h2 className="text-3xl font-extrabold text-green-600">How It Works</h2>
             <p className="mt-4 text-lg text-gray-500">
               Getting fresh produce has never been easier
             </p>
@@ -111,7 +111,7 @@ const Index = () => {
 
           <div className="mt-16">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              <Card>
+              <Card className="transition-transform duration-300 ease-in-out transform hover:scale-110" >
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
                     <span className="text-lg font-bold">1</span>
@@ -125,7 +125,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-transform duration-300 ease-in-out transform hover:scale-110" >
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
                     <span className="text-lg font-bold">2</span>
@@ -139,7 +139,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="transition-transform duration-300 ease-in-out transform hover:scale-110" >
                 <CardHeader>
                   <div className="flex items-center justify-center h-12 w-12 rounded-md bg-green-500 text-white mx-auto">
                     <span className="text-lg font-bold">3</span>
@@ -161,12 +161,12 @@ const Index = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">What Our Users Say</h2>
+            <h2 className="text-3xl font-extrabold text-green-600">What Our Users Say</h2>
           </div>
 
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             <Card>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -180,7 +180,7 @@ const Index = () => {
             </Card>
 
             <Card>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -194,7 +194,7 @@ const Index = () => {
             </Card>
 
             <Card>
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 transition-transform duration-300 ease-in-out transform hover:scale-110">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
@@ -222,7 +222,7 @@ const Index = () => {
           <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
             <div className="inline-flex rounded-md shadow">
               <Link to="/auth">
-                <Button size="lg" variant="secondary" className="inline-flex items-center">
+                <Button size="lg" variant="secondary" className="inline-flex items-center transition-transform duration-300 ease-in-out transform hover:scale-110">
                   Get started
                   <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
