@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
@@ -10,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { Product, OrderItem } from '@/types/database';
-import { Plus, Package, TrendingUp, Edit, Trash2 } from 'lucide-react';
+import { Plus, Package, TrendingUp, Edit, Trash2, Image } from 'lucide-react';
 import { AdminInvitations } from '@/components/AdminInvitations';
 
 export default function Dashboard() {
@@ -29,7 +30,8 @@ export default function Dashboard() {
     price: '',
     unit: '',
     category: '',
-    stock_quantity: ''
+    stock_quantity: '',
+    image_url: ''
   });
 
   useEffect(() => {
@@ -86,7 +88,8 @@ export default function Dashboard() {
       price: '',
       unit: '',
       category: '',
-      stock_quantity: ''
+      stock_quantity: '',
+      image_url: ''
     });
     setEditingProduct(null);
     setShowAddProduct(false);
@@ -107,6 +110,7 @@ export default function Dashboard() {
         unit: productForm.unit,
         category: productForm.category,
         stock_quantity: parseInt(productForm.stock_quantity) || 0,
+        image_url: productForm.image_url || null,
         is_available: true
       };
 
@@ -153,7 +157,8 @@ export default function Dashboard() {
       price: product.price.toString(),
       unit: product.unit,
       category: product.category,
-      stock_quantity: (product.stock_quantity || 0).toString()
+      stock_quantity: (product.stock_quantity || 0).toString(),
+      image_url: product.image_url || ''
     });
     setEditingProduct(product);
     setShowAddProduct(true);
@@ -343,6 +348,17 @@ export default function Dashboard() {
                           onChange={(e) => setProductForm({...productForm, stock_quantity: e.target.value})}
                         />
                       </div>
+
+                      <div className="space-y-2">
+                        <Label htmlFor="image_url">Image URL</Label>
+                        <Input
+                          id="image_url"
+                          type="url"
+                          placeholder="https://example.com/image.jpg"
+                          value={productForm.image_url}
+                          onChange={(e) => setProductForm({...productForm, image_url: e.target.value})}
+                        />
+                      </div>
                     </div>
                     
                     <div className="space-y-2">
@@ -354,6 +370,24 @@ export default function Dashboard() {
                         rows={3}
                       />
                     </div>
+
+                    {/* Image Preview */}
+                    {productForm.image_url && (
+                      <div className="space-y-2">
+                        <Label>Image Preview</Label>
+                        <div className="aspect-square w-32 bg-gray-100 rounded-md overflow-hidden">
+                          <img
+                            src={productForm.image_url}
+                            alt="Product preview"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                            }}
+                          />
+                        </div>
+                      </div>
+                    )}
                     
                     <div className="flex gap-2">
                       <Button type="submit" disabled={loading}>
@@ -381,6 +415,30 @@ export default function Dashboard() {
                     {products.map((product) => (
                       <Card key={product.id} className={!product.is_available ? 'opacity-60' : ''}>
                         <CardContent className="p-4">
+                          {/* Product Image */}
+                          <div className="aspect-square bg-gray-100 rounded-md mb-3 flex items-center justify-center overflow-hidden">
+                            {product.image_url ? (
+                              <img
+                                src={product.image_url}
+                                alt={product.name}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement;
+                                  target.src = '';
+                                  target.style.display = 'none';
+                                  const parent = target.parentElement;
+                                  if (parent) {
+                                    parent.innerHTML = '<div class="text-gray-400 text-4xl flex items-center justify-center h-full"><Image class="w-8 h-8" /></div>';
+                                  }
+                                }}
+                              />
+                            ) : (
+                              <div className="text-gray-400 text-4xl">
+                                <Image className="w-8 h-8" />
+                              </div>
+                            )}
+                          </div>
+
                           <div className="flex justify-between items-start mb-2">
                             <h3 className="font-semibold">{product.name}</h3>
                             <div className="flex gap-1">
