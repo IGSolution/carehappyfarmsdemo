@@ -141,7 +141,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 
   }
-  
+
   const signUp = async (email: string, password: string, userData: any) => {
   console.log('Attempting sign up for:', email);
 
@@ -187,7 +187,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const profileData = await  fetchProfile(data.user.id)
 
  // If it's a customer and email is not confirmed, sign them out
-    if (profileData?.role === 'customer' && !data.user.email_confirmed_at) {
+    if (profileData?.role === 'customer' && profileData?.role=== 'admin' &&  !data.user.email_confirmed_at) {
       // Sign out the user since they haven't confirmed their email
       await supabase.auth.signOut();
       return { 

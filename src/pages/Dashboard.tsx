@@ -216,6 +216,11 @@ export default function Dashboard() {
     }
   };
 
+  const handleSignOut = async () => {
+  console.log('Sign out button clicked');
+  await signOut();
+};
+
   const totalSales = orders.reduce((sum, order) => sum + (order.unit_price * order.quantity), 0);
   const totalOrders = orders.length;
 
@@ -225,7 +230,7 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
-            <Button onClick={signOut} variant="outline">
+            <Button onClick={handleSignOut} variant="outline">
               Sign Out
             </Button>
           </div>
