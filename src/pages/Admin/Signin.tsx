@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { Leaf, ShieldCheck } from 'lucide-react';
-
+import logo from "../../assets/android-chrome-192x192.png"
 export default function AdminAuth() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -70,7 +70,9 @@ export default function AdminAuth() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <Leaf className="h-8 w-8 text-green-600" />
+            <div className="h-8 w-8 text-green-600" >
+              <img src={logo} alt="logo"/>
+            </div>
             <span className="text-2xl font-bold">KRP FARM</span>
           </div>
           <div className="flex items-center justify-center mb-2">
