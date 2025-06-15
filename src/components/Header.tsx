@@ -46,6 +46,9 @@ export default function Header () {
             </nav>
 
             <div className="hidden md:flex gap-2">
+              <Link to="/admin-signin">
+                <Button variant="outline">Admin sigin</Button>
+              </Link>
               <Link to="/marketplace">
                 <Button variant="outline">Browse Marketplace</Button>
               </Link>
