@@ -134,9 +134,9 @@ export default function Donations() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Support Our Farm Store</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Support Our KRP Farm</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Join us in revolutionizing local agriculture. Your donation helps connect farmers with communities 
+            Join us in revolutionizing local agriculture. Your donation helps connect KRP farmers with communities 
             and creates sustainable food systems for everyone.
           </p>
         </div>
@@ -146,7 +146,9 @@ export default function Donations() {
           <Card className="shadow-lg">
             <CardHeader className="text-center">
               <div className="mx-auto w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <DollarSign className="h-6 w-6 text-green-600" />
+                <div className="h-6 w-6 text-green-600 text-2xl" > 
+                  ₦
+                </div>
               </div>
               <CardTitle className="text-2xl">Make a Donation</CardTitle>
               <CardDescription>
@@ -313,10 +315,10 @@ export default function Donations() {
           </p>
           <div className="space-y-2">
             <p className="text-lg">
-              <strong>Email:</strong> <a href="mailto:admin@primeorbs.com" className="text-blue-600 hover:underline">admin@primeorbs.com</a>
+              <strong>Email:</strong> <a href="mailto:rpkaneng@gmail.com" className="text-blue-600 hover:underline">rpkaneng@gmail.com</a>
             </p>
             <p className="text-lg">
-              <strong>Phone:</strong> <a href="tel:+1234567890" className="text-blue-600 hover:underline">+1 (234) 567-890</a>
+              <strong>Phone:</strong> <a href="tel:+1234567890" className="text-blue-600 hover:underline">+234 (803) 966 8177</a>
             </p>
           </div>
         </div>

@@ -10,19 +10,19 @@ export const SocialIcons = ({ className = "", iconSize = 24 }: SocialIconsProps)
   const socialLinks = [
     {
       name: 'Facebook',
-      url: 'https://facebook.com',
+      url: 'https://www.facebook.com/story.php?story_fbid=1237399199766612&id=446105762229297&_rdr',
       icon: Facebook,
       color: 'hover:text-blue-600'
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com',
+      url: 'https://x.com/krpfarms',
       icon: Twitter,
       color: 'hover:text-blue-400'
     },
     {
       name: 'Instagram', 
-      url: 'https://instagram.com',
+      url: 'https://www.instagram.com/krpfarms_/',
       icon: Instagram,
       color: 'hover:text-pink-600'
     },
