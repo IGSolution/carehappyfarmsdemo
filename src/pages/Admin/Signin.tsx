@@ -14,15 +14,17 @@ export default function AdminAuth() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { signIn, user } = useAuth();
+  const { signIn, user, profile } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
   // Redirect if already authenticated
-  if (user && user.email_confirmed_at) {
-    navigate('/dashboard');
-    return null;
-  }
+  if (user &&  profile?.role=== 'admin') {
+  navigate('/dashboard');
+  return null;
+}
+
+
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();

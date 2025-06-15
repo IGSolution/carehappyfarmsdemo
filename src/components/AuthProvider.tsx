@@ -141,27 +141,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 
   }
+  
   const signUp = async (email: string, password: string, userData: any) => {
-    console.log('Attempting sign up for:', email);
-    
-    const isAdmin = userData.role === 'admin';
-    const redirectUrl = isAdmin 
-      ? `${window.location.origin}/dashboard`
-      :
-      `${window.location.origin}/auth?confirmed=true`
-    
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: userData,
-        emailRedirectTo: redirectUrl
-      }
-    });
-    
-    console.log('Sign up result:', { data, error });
-    return { data, error };
-  };
+  console.log('Attempting sign up for:', email);
+
+  const isAdmin = userData.role === 'admin';
+  const redirectUrl = isAdmin 
+    ? `${window.location.origin}/dashboard` // won't be used if admin doesn't confirm email
+    : `${window.location.origin}/auth?confirmed=true`;
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      data: userData,
+      emailRedirectTo: redirectUrl
+    }
+  });
+
+  console.log('Sign up result:', { data, error });
+
+  // Manual redirect for admin users who register directly
+  if (isAdmin && !error) {
+    window.location.href = '/dashboard'; // Or use router.push('/dashboard') if using Next.js/React Router
+  }
+
+  return { data, error };
+};
+
 
 
   const signIn = async (email: string, password: string) => {
